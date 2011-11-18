@@ -1,0 +1,22 @@
+require 'rake'
+require 'gosu_albacore'
+require 'solution'
+
+include GosuAlbacore
+
+def solution
+  @solution = Solution.new
+  @solution.name = 'MySolution'
+  @solution.directory = 'src/Mysolution'
+  @solution.msbuild_path = '/cygdrive/c/WINDOWS/Microsoft.NET/Framework/v4.0.30319/MSBuild.exe'
+  @solution.nunit_path = ''
+  @solution.lib_directory = ''
+
+  @solution.add_project('code2slide')
+  @solution.add_project('code2slide.core')
+  @solution.add_project('code2slide.specifications')
+
+  @solution
+end
+
+task :default => [:clean, :copy_libs, :build_release, :nunit]
