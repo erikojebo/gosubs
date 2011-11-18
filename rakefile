@@ -2,8 +2,6 @@ require 'rake'
 require 'gosu_albacore'
 require 'solution'
 
-#include GosuAlbacore
-
 def solution
   @solution = Solution.new
   @solution.name = 'MySolution'

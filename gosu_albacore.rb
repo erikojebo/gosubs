@@ -111,7 +111,7 @@ namespace :build do
   desc 'Build the solution with the release configuration'
   msbuild :release do |msb|
     puts 'building release'
-    msb.path_to_command = solution.msbuild_path
+    msb.command = solution.msbuild_path
     msb.properties :configuration => :Release, :architecture => :x86
     msb.targets :Build
     msb.solution = solution.solution_file
@@ -120,7 +120,7 @@ namespace :build do
   desc 'Build the solution with the debug configuration'
   msbuild :debug do |msb|
     puts 'building debug'
-    msb.path_to_command = solution.msbuild_path
+    msb.command = solution.msbuild_path
     msb.properties :configuration => :Debug, :architecture => :x86
     msb.targets :Build
     msb.solution = solution.solution_file
@@ -138,7 +138,7 @@ namespace :test do
   nunit :nunit do |nunit|
     puts 'running nunit tests'
 
-    nunit.path_to_command = solution.nunit_path
+    nunit.command = solution.nunit_path
     nunit.options '/framework:net-4.0'
 
     solution.projects.each do |p|
