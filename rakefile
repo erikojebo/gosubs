@@ -19,4 +19,6 @@ def solution
   @solution
 end
 
+desc 'Clean, copy dependencies, build release and run tests'
 task :default => [:clean, :copy_libs, :build_release, :nunit]
+
