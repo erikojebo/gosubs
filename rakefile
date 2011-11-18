@@ -2,7 +2,7 @@ require 'rake'
 require 'gosu_albacore'
 require 'solution'
 
-include GosuAlbacore
+#include GosuAlbacore
 
 def solution
   @solution = Solution.new

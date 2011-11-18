@@ -101,7 +101,7 @@ class Solution
   end
 end
 
-module GosuAlbacore
+namespace :build do
   desc 'Remove build output from previous builds (bin and obj folders)'
   task :clean do
     puts 'cleaning solution'
@@ -109,7 +109,7 @@ module GosuAlbacore
   end
 
   desc 'Build the solution with the release configuration'
-  msbuild :build_release do |msb|
+  msbuild :release do |msb|
     puts 'building release'
     msb.path_to_command = solution.msbuild_path
     msb.properties :configuration => :Release, :architecture => :x86
@@ -118,7 +118,7 @@ module GosuAlbacore
   end
 
   desc 'Build the solution with the debug configuration'
-  msbuild :build_debug do |msb|
+  msbuild :debug do |msb|
     puts 'building debug'
     msb.path_to_command = solution.msbuild_path
     msb.properties :configuration => :Debug, :architecture => :x86
@@ -131,7 +131,9 @@ module GosuAlbacore
     puts 'copying libs'
     solution.copy_libs
   end
+end
 
+namespace :test do
   desc 'Run NUnit tests for all projects in the solution'
   nunit :nunit do |nunit|
     puts 'running nunit tests'
